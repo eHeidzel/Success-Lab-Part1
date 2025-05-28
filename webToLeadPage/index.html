@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Lead Form</title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Контактная информация</h2>
+        <form id="webToLeadForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgK000003MjCt" method="POST">
+            <input type="hidden" name="captcha_settings" value='{"keyname":"WebToLead","fallback":"true","orgId":"00DgK000003MjCt","ts":""}'>
+            <input type="hidden" name="oid" value="00DgK000003MjCt">
+            <input type="hidden" name="retURL" value="https://webtolead-8d852.web.app">
+    
+            <div class="form-group">
+                <label for="first_name" class="required-field">First Name</label>
+                <input id="first_name" maxlength="40" name="first_name" type="text">
+                <div id="first_name-error" class="error"></div>
+            </div>
+    
+            <div class="form-group">
+                <label for="last_name" class="required-field">Last Name</label>
+                <input id="last_name" maxlength="80" name="last_name" type="text">
+                <div id="last_name-error" class="error"></div>
+            </div>
+    
+            <div class="form-group">
+                <label for="email" class="required-field">Email</label>
+                <input id="email" maxlength="80" name="email" type="email">
+                <div id="email-error" class="error"></div>
+            </div>
+    
+            <div class="form-group">
+                <label for="company" class="required-field">Company</label>
+                <input id="company" maxlength="40" name="company" type="text">
+                <div id="company-error" class="error"></div>
+            </div>
+    
+            <div class="form-group">
+                <label for="00NgK000012Ba6X" class="required-field">Product</label>
+                <select id="00NgK000012Ba6X" name="00NgK000012Ba6X" required>
+                    <option value="">-- Выберите продукт --</option>
+                    <option value="prod001">Продукт 1</option>
+                    <option value="prod002">Продукт 2</option>
+                    <option value="prod003">Продукт 3</option>
+                </select>
+                <div id="product-error" class="error"></div>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone" class="required-field">Phone</label>
+                <input id="phone" maxlength="40" name="phone" type="tel">
+                <div id="phone-error" class="error"></div>
+            </div>
+
+            <input type="hidden" name="lead_status" value="Open - Not Contacted">
+    
+            <div class="g-recaptcha" data-sitekey="6LcDL0wrAAAAAAg3I2-Hje6AeH4Y3Uqd30GpyMIB"></div>
+            <div id="recaptcha-error" class="error" style="display: none;">Пожалуйста, подтвердите, что вы не робот</div>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+    </script>
+</body>
+</html>
